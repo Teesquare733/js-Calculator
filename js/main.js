@@ -17,9 +17,9 @@ let mul = document.getElementById('mul');
 let sub = document.getElementById('sub');
 let add = document.getElementById('add');
 
-let operand1 = '0';
+let operand1 = '0.0';
 let operator = '';
-let operand2 = '0';
+let operand2 = '0.0';
 
 function show(val) {
     display.innerHTML += val;
@@ -50,19 +50,19 @@ function subtraction() {
 function eql() {
     operand2 = display.innerHTML;
     if (operator == '*') {
-        let output = operand1 * operand2;
+        let output = parseFloat(operand1) * parseFloat(operand2);
         display.innerHTML = output;
     }
     else if (operator == '+') {
-        let output = operand1 + operand2;
+        let output = parseFloat(operand1) + parseFloat(operand2);
         display.innerHTML = output;
     }
     else if (operator == '-') {
-        let output = operand1 - operand2;
+        let output = parseFloat(operand1) - parseFloat(operand2);
         display.innerHTML = output;
     }
     else if (operator == '/') {
-        let output = operand1 / operand2;
+        let output = parseFloat(operand1) / parseFloat(operand2);
         display.innerHTML = output;
     }
 }
@@ -82,3 +82,9 @@ sub.addEventListener ('click', function() {subtraction();});
 div.addEventListener ('click', function() {divide();});
 eq.addEventListener ('click', function() {eql();});
 zero.addEventListener ('click', function() {show(0);});
+dot.addEventListener ('click', function() {show('.');});
+del.addEventListener ('click', function() {
+    display.innerHTML = 0;
+    operand1 = 0;
+    operand2 = 0;
+})
